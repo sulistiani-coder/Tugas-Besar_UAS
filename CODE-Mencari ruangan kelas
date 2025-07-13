@@ -1,0 +1,62 @@
+# --- Deklarasi dan Inisialisasi Data Ruangan ---
+kodeRuangan = ["R.A.101", "R.B.205", "R.C.001"]
+namaRuangan = ["Ruang Teori A-101", "Laboratorium Komputer B-205", "Auditorium Utama C"]
+kapasitasRuangan = ["50 Orang", "30 Orang", "200 Orang"]
+fasilitasRuangan = ["Proyektor, AC, Whiteboard", "Komputer (30 unit), AC, Jaringan Internet", "Sound System, Layar Lebar, Panggung"]
+
+# --- FUNGSI ALGORITMA LINEAR SEARCH ---
+def cariRuanganLinear(kode_array, kode_dicari):
+    print("\n" + "="*232) # Pemisah
+    print("Memulai Proses Pencarian...")
+    print("="*232 + "\n") # Pemisah
+
+    for i in range(len(kode_array)):
+        print(f"Langkah {i + 1:<2} : Memeriksa kode ruangan '{kode_array[i]}'") # Menggunakan {i + 1:<2} untuk perataan
+        
+        if kode_array[i] == kode_dicari:
+            print("\n" + "*"*232) # Pemisah
+            print("Data Ditemukan!")
+            print("*"*232) # Pemisah
+            return i 
+    
+    return None
+
+# --- PROGRAM UTAMA ---
+
+# --- Tampilan Awal / Header Program ---
+print("="*232)
+print(" SISTEM PENCARIAN RUANGAN KELAS ".center(230)) # Menengahkan teks
+print(" Berdasarkan Kode Ruangan (Linear Search) ".center(230))
+print("="*232 + "\n")
+
+# Cek apakah array kodeRuangan kosong
+if not kodeRuangan: 
+    print("Kode ruangan kosong, tidak ada data yang bisa dicari.")
+    print("\n" + "="*232) # Footer
+    print(" PROGRAM SELESAI ".center(230))
+    print("="*232)
+else:
+    print("Silakan masukkan kode ruangan yang ingin dicari.")
+    kodeDicari = input("Kode Ruangan (contoh: R.A.101): ").strip() # Menghilangkan spasi ekstra di awal/akhir input
+
+    # Panggil fungsi pencarian
+    indeksDitemukan = cariRuanganLinear(kodeRuangan, kodeDicari)
+
+    # --- Tampilan Hasil Pencarian ---
+    print("\n" + "="*232) # Pemisah hasil
+    print(" HASIL PENCARIAN ".center(230))
+    print("="*232 + "\n")
+
+    if indeksDitemukan is not None: 
+        print(f"Kode Ruangan       : {kodeDicari}")
+        print(f"Nama Ruangan       : {namaRuangan[indeksDitemukan]}")
+        print(f"Kapasitas Ruangan  : {kapasitasRuangan[indeksDitemukan]}")
+        print(f"Fasilitas          : {fasilitasRuangan[indeksDitemukan]}")
+        
+    else: 
+        print(f"Mohon maaf, ruangan dengan kode '{kodeDicari}' tidak ditemukan.")
+
+    # --- Tampilan Akhir / Footer Program ---
+    print("\n" + "="*232) # Footer
+    print(" PROGRAM SELESAI ".center(230))
+    print("="*232)
